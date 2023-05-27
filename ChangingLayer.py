@@ -31,10 +31,12 @@ def lissage(attribut):
     data["mean_"+attribut][2] = data[attribut][3]
 
 def derivate(attribut):
+    """Derivate the value of the column attribut"""
     data["der_"+attribut] = data[attribut].diff()
     data["der_"+attribut][0] = data["der_" + attribut][1]
 
 def new_features(method):
+    """Accepts method lissage and derivate"""
     global TOADD
     if method == "lissage":
         features = old_features.copy() + ['mean_GR','mean_ILD_log10','mean_DeltaPHI','mean_PHIND','mean_PE']

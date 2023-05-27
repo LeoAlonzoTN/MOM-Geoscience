@@ -15,11 +15,8 @@ from finalPlot import plotFinal
 
 print("loading modele 1 ...")
 test_well_pred1,accuracy = modele1.modele1()
-"""while (accuracy < 0.58):
-    test_well_pred1,accuracy = modele1.modele1()
-    print(accuracy)"""
 print("loading modele 2 ...")
-test_well_pred2 = modele2.modele2(tree = True)
+test_well_pred2 = modele2.modele2()
 print("Done")
 Modele_final = pd.DataFrame()
 Modele_final[['Facies','Old_Prediction']] = test_well_pred1[['Facies','Prediction']]
@@ -49,8 +46,6 @@ while i <= test_well_pred1.index[-1]:
         Modele_final.loc[debut:i,'Entropy'] = cur_dict[max_facies]/sum(cur_dict.values())
     Modele_final.loc[debut:i,'New_Prediction'] = max_facies
     i+=1
-
-print(Modele_final)
 
 
 # 1=sandstone  2=c_siltstone   3=f_siltstone 
